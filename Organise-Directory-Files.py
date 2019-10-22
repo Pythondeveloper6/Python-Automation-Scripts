@@ -4,7 +4,7 @@ import shutil
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 try:
-    print("Organising your files intro [ images - music - video -executable - archive - torrent - document - code ]")
+    print("Organising your files intro [ images - music - video -executable - archive - torrent - document - code - design files]")
     for filename in os.listdir(dir_path):
         # Check if files are images and you can add more extentions 
         if filename.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".bmp", ".pbm", ".pnm")):
@@ -24,14 +24,14 @@ try:
 
         # Check if files are videos and you can add more extentions
         if filename.lower().endswith((".webm", ".mp4")):
-            # If music folder doesnt exist then create
-            if not os.path.exists("music"):
-                os.makedirs("music")
-            shutil.copy2(filename, "music")
+            # If video folder doesnt exist then create
+            if not os.path.exists("video"):
+                os.makedirs("video")
+            shutil.copy2(filename, "video")
             os.remove(filename)
 
         # Check if files are executables
-        if filename.lower().endswith((".exe", ".msi", ".deb")):
+        if filename.lower().endswith((".exe", ".msi", ".deb" , "dmg")):
             # If executables folder doesnt exist then create
             if not os.path.exists("executables"):
                 os.makedirs("executables")
@@ -40,7 +40,7 @@ try:
 
         # Check if files are archive files
         if filename.lower().endswith((".rar", ".tar" , ".zip" , ".gz")):
-            # If executables folder doesnt exist then create
+            # If archive folder doesnt exist then create
             if not os.path.exists("archives"):
                 os.makedirs("archives")
             shutil.copy2(filename, "archives")
@@ -49,7 +49,7 @@ try:
 
         # Check if files are torrent files
         if filename.lower().endswith((".torrent",)):
-            # If executables folder doesnt exist then create
+            # If torrent folder doesnt exist then create
             if not os.path.exists("torrent"):
                 os.makedirs("torrent")
             shutil.copy2(filename, "torrent")
@@ -57,7 +57,7 @@ try:
 
         # Check if files are documents
         if filename.lower().endswith((".txt", ".pdf", ".docx" , "doc")):
-            # If executables folder doesnt exist then create
+            # If documents folder doesnt exist then create
             if not os.path.exists("documents"):
                 os.makedirs("documents")
             shutil.copy2(filename, "documents")
@@ -66,12 +66,19 @@ try:
 
         # Check if files are code files
         if filename.lower().endswith((".py", ".php", ".html" , ".css" , ".js")):
-            # If executables folder doesnt exist then create
+            # If code folder doesnt exist then create
             if not os.path.exists("code"):
                 os.makedirs("code")
             shutil.copy2(filename, "code")
             os.remove(filename)
 
+        # Check if files are design files
+        if filename.lower().endswith((".psd", ".ai")):
+            # If desgin folder doesnt exist then create
+            if not os.path.exists("design-files"):
+                os.makedirs("design-files")
+            shutil.copy2(filename, "design-files")
+            os.remove(filename)
 
 except OSError:
     print("Error happened ...... try again")
